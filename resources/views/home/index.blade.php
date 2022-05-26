@@ -1,3 +1,11 @@
-<h1>
-    Hi
-</h1>
+@extends('layouts.layout')
+
+@section('title')
+    Home
+@endsection
+
+@section('content')
+    Todo:
+    <br> -Unit tests
+    <br> -Make responsive
+@endsection

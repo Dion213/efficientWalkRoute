@@ -17,7 +17,7 @@ class DepartmentController extends Controller
     public function index()
     {
         return view('departments.index', [
-            'departments' => $this->department_repo->orderByOrderAsc(),
+//            'departments' => $this->department_repo->orderByOrderAsc(),
         ]);
     }
 }
