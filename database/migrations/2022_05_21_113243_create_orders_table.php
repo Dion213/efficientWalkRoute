@@ -10,8 +10,16 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->text('articles');
-            $table->foreignId('user');
+            $table->foreignId('user_id');
+            $table->foreignId('shopping_list_id');
+            $table->timestamps();
+        });
+
+        Schema::create('article_order', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('order_id');
+            $table->foreignId('article_id');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

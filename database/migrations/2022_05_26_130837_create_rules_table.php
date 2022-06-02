@@ -14,8 +14,8 @@ return new class extends Migration
             $table->string('description');
             $table->string('type');
             $table->foreignId('article_id');
-            $table->integer('min_count_required')->nullable();
-            $table->integer('max_count_required')->nullable();
+            $table->integer('min_amount_required')->nullable();
+            $table->integer('max_amount_allowed')->nullable();
             $table->enum('weekdays', [
                 'Monday',
                 'Tuesday',

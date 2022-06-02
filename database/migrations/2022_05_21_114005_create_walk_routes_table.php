@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('walk_routes', function (Blueprint $table) {
             $table->id();
-            $table->text('walkroute');
+            $table->text('route');
             $table->timestamps();
         });
     }
