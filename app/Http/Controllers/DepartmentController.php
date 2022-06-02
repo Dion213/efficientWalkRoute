@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
-use App\Repositories\OrderRepository;
+use App\Repositories\DepartmentRepository;
 
 class DepartmentController extends Controller
 {
-    public $department_repo;
+    protected $department_repo;
 
-    public function __construct(OrderRepository $repo)
+    public function __construct(DepartmentRepository $repo)
     {
         $this->department_repo = $repo;
     }
@@ -17,7 +16,17 @@ class DepartmentController extends Controller
     public function index()
     {
         return view('departments.index', [
-//            'departments' => $this->department_repo->orderByOrderAsc(),
+            'departments' => $this->department_repo->getOrderedByOrder(),
         ]);
+    }
+
+    public function create()
+    {
+        //
+    }
+
+    public function edit()
+    {
+        //
     }
 }

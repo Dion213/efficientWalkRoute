@@ -15,6 +15,6 @@ class ShoppingListRepository extends Repository implements ShoppingListInterface
 
     public function get(): Collection
     {
-        return ShoppingList::all();
+        return ShoppingList::all()->load('orders');
     }
 }

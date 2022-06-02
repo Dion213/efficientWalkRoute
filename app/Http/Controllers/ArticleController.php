@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Repositories\RuleRepository;
-use Illuminate\Http\Request;
+use App\Repositories\ArticleRepository;
 
 class ArticleController extends Controller
 {
-    public RuleRepository $article_repo;
+    protected ArticleRepository $article_repo;
 
-    public function __construct(RuleRepository $repository)
+    public function __construct(ArticleRepository $repository)
     {
         $this->article_repo = $repository;
     }
@@ -20,5 +18,15 @@ class ArticleController extends Controller
         return view('articles.index', [
             'articles' => $this->article_repo->get(),
         ]);
+    }
+
+    public function create()
+    {
+//        return view('articles.create');
+    }
+
+    public function edit()
+    {
+        //
     }
 }

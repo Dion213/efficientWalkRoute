@@ -6,7 +6,7 @@ use App\Repositories\RuleRepository;
 
 class RulesController extends Controller
 {
-    public $rules_repo;
+    protected $rules_repo;
 
     public function __construct(RuleRepository $repository)
     {
@@ -18,5 +18,15 @@ class RulesController extends Controller
         return view('rules.index', [
             'rules' => $this->rules_repo->get(),
         ]);
+    }
+
+    public function create()
+    {
+        //
+    }
+
+    public function edit()
+    {
+        //
     }
 }

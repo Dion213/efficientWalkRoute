@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Repositories\OrderRepository;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public $order_repo;
+    protected $order_repo;
 
     public function __construct(OrderRepository $repository)
     {
@@ -17,7 +17,17 @@ class OrderController extends Controller
     public function index()
     {
         return view('orders.index', [
-            'order' => $this->order_repo->get(),
+            'orders' => $this->order_repo->getForUser(auth()->user())
         ]);
+    }
+
+    public function create()
+    {
+        //
+    }
+
+    public function edit()
+    {
+        //
     }
 }

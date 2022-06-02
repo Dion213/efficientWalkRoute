@@ -11,14 +11,7 @@ return new class extends Migration
         Schema::create('shopping_lists', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->foreignId('walkroute_id');
-            $table->timestamps();
-        });
-
-        Schema::create('shopping_list_order', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('shopping_list_id');
-            $table->foreignId('order_id');
+            $table->foreignId('walkroute_id')->nullable();
             $table->timestamps();
         });
     }
