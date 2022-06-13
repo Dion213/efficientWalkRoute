@@ -19,7 +19,6 @@ class ShoppingListFactory extends Factory
     {
         return [
             'date' => $this->faker->date,
-            'walkroute_id' => WalkRoute::factory(),
         ];
     }
 }

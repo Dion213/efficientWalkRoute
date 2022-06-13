@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ShoppingList;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class WalkRouteFactory extends Factory
     {
         return [
             'route' => '',
+            'shopping_list_id' => ShoppingList::factory(),
         ];
     }
 }

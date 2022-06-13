@@ -12,7 +12,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->string('type');
+            $table->enum('type', [
+                'min_amount',
+                'max_amount',
+                'weekdays',
+                'not_available_period',
+            ]);
             $table->foreignId('article_id');
             $table->integer('min_amount_required')->nullable();
             $table->integer('max_amount_allowed')->nullable();

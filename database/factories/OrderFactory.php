@@ -20,7 +20,7 @@ class OrderFactory extends Factory
     {
         return [
             'user_id' => User::query()->inRandomOrder()->first() ?? User::factory(),
-            'shopping_list' => ShoppingList::factory(),
+            'shopping_list_id' => ShoppingList::factory(),
         ];
     }
 }

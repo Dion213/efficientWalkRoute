@@ -2,10 +2,9 @@
 
 namespace App\Interfaces\Repository;
 
-use App\Models\Article;
 use Illuminate\Support\Collection;
 
-interface ArticleInterface
+interface OrderruleInterface
 {
     public function get(): Collection;
 }

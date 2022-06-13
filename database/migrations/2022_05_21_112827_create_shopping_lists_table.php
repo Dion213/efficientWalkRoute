@@ -11,7 +11,6 @@ return new class extends Migration
         Schema::create('shopping_lists', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->foreignId('walkroute_id')->nullable();
             $table->timestamps();
         });
     }
