@@ -25,13 +25,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Database\Factories\WalkRouteFactory factory(...$parameters)
  * @property string $route
  * @method static \Illuminate\Database\Eloquent\Builder|WalkRoute whereRoute($value)
+ * @property int $shopping_list_id
+ * @property-read \App\Models\ShoppingList|null $shoppingList
+ * @method static \Illuminate\Database\Eloquent\Builder|WalkRoute whereShoppingListId($value)
  */
 class WalkRoute extends Model
 {
     use HasFactory;
 
-    public function order(): BelongsTo
+    protected $guarded = [];
+    protected $casts = [
+        'route' => 'array'
+    ];
+
+    public function shoppingList(): BelongsTo
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(ShoppingList::class);
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\Repository\OrderInterface;
+use App\Interfaces\Repository\DepartmentInterface;
 use App\Models\Department;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 
-class DepartmentRepository extends Repository implements OrderInterface
+class DepartmentRepository extends Repository implements DepartmentInterface
 {
     public function __construct(Department $model)
     {
@@ -38,5 +38,10 @@ class DepartmentRepository extends Repository implements OrderInterface
         }
 
         return redirect()->route('departments.index');
+    }
+
+    public function findOrFail($id): Department
+    {
+        return $this->model::findOrFail($id);
     }
 }

@@ -1,10 +1,15 @@
 @extends('layouts.layout')
 
 @section('title')
-    Walkroute $DATE
+    Walkroute {{ $date }}
 @endsection
 
 @section('content')
-    Info:
-    <br> -When you generate a route the Type is method name. So that you can do $this->$article->type(). So you dont have unnecassairy switch / ifs
+    @foreach ($walkRoute as $department)
+        <h1>{{ $department['departmentName'] }}</h1>
+        @foreach ($department['articles'] as $article)
+            {{ $article['name'] }} - {{ $article['amount'] }}<br />
+        @endforeach
+        <br />
+    @endforeach
 @endsection

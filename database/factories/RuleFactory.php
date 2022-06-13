@@ -21,10 +21,10 @@ class RuleFactory extends Factory
             'name' => $this->faker->word.' Rule',
             'description' => $this->faker->sentence,
             'type' => $this->faker->randomElement([
-                'days',
-                'not_available',
-                'min_required',
-                'max_allowed'
+                'min_amount',
+                'max_amount',
+                'weekdays',
+                'not_available_period'
             ]),
             'article_id' => Article::factory(),
             'min_amount_required' => 3,

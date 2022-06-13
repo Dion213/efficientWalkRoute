@@ -8,7 +8,7 @@
     Todo:
     <br> -Basic crud
     <br> -Edit is new page
-    <br> -Show the amount of the article you ordered.
+    <br> -Show the amount of the articles you ordered.
 
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="mb-4 sm:mt-0 sm:flex-none">

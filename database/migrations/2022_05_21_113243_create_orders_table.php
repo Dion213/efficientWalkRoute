@@ -15,7 +15,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('article_order', function (Blueprint $table) {
+        Schema::create('orderrules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id');
             $table->foreignId('article_id');

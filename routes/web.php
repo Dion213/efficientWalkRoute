@@ -8,6 +8,7 @@ use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\RulesController;
 use App\Http\Controllers\ShoppingListController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WalkRouteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,7 +37,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::prefix('shoppinglists')->group(function () {
         Route::get('/', [ShoppingListController::class, 'index'])->name('shopping-list.index');
         Route::get('/add', [ShoppingListController::class, 'create'])->name('shopping-list.create');
-        Route::get('/{shoppinglist}/edit', [ShoppingListController::class, 'edit'])->name('shopping-list.edit');
+        Route::get('/{shopping_list}/edit', [ShoppingListController::class, 'edit'])->name('shopping-list.edit');
+
+        //Walkroute
+        Route::get('/{shopping_list}/walkroute/show', [WalkRouteController::class, 'show'])->name('walkroute.show');
+        Route::get('/{shopping_list}/walkroute/create', [WalkRouteController::class, 'create'])->name('walkroute.create');
     });
 
     Route::prefix('articles')->group(function () {

@@ -44,10 +44,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder|Rule whereMaxAmountAllowed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Rule whereMinAmountRequired($value)
  */
+
 class Rule extends Model
 {
     use HasFactory;
 
+    //Types
+    public const MIN_AMOUNT = 'min_amount';
+    public const MAX_AMOUNT = 'max_amount';
+    public const WEEKDAYS = 'weekdays';
+    public const NOT_AVAILABLE_PERIOD = 'not_available_period';
+
+    //Weekdays
     public const MONDAY = 'Monday';
     public const TUESDAY = 'Tuesday';
     public const WEDNESDAY = 'Wednesday';

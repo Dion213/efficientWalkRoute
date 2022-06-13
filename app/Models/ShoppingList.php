@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Collection;
 
 /**
  * App\Models\ShoppingList
@@ -28,6 +29,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @method static \Illuminate\Database\Eloquent\Builder|ShoppingList whereWalkrouteId($value)
  * @mixin \Eloquent
  * @method static \Database\Factories\ShoppingListFactory factory(...$parameters)
+ * @property-read Collection $all_articles
  */
 class ShoppingList extends Model
 {
