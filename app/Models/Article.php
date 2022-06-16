@@ -32,11 +32,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Article whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read mixed $can_delete
  */
 
 class Article extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 
     public function Orders(): HasMany
     {
@@ -51,5 +54,11 @@ class Article extends Model
     public function rules(): HasMany
     {
         return $this->hasMany(Rule::class);
+    }
+
+    // Attributes
+    public function getCanDeleteAttribute()
+    {
+           return $this->orders()->count() === 0;
     }
 }

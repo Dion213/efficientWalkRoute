@@ -26,13 +26,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder|Department whereUpdatedAt($value)
  * @mixin \Eloquent
  * @method static \Database\Factories\DepartmentFactory factory(...$parameters)
+ * @property-read mixed $can_delete
  */
 class Department extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class);
+    }
+
+    // Attributes
+    public function getCanDeleteAttribute()
+    {
+        return $this->articles()->count() === 0;
     }
 }

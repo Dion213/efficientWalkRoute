@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rule;
 use App\Repositories\RuleRepository;
+use Illuminate\Http\Request;
 
 class RulesController extends Controller
 {
@@ -22,7 +24,15 @@ class RulesController extends Controller
 
     public function create()
     {
-        //
+        return view('rules.create', [
+            'rule'  =>  new Rule,
+            'types' => Rule::$types,
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->collect());
     }
 
     public function edit()

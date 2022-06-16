@@ -24,6 +24,11 @@ class DepartmentRepository extends Repository implements DepartmentInterface
         return Department::query()->orderBy('order')->get();
     }
 
+    public function findOrFail($id): Department
+    {
+        return $this->model::findOrFail($id);
+    }
+
     public function saveOrder(Collection $departments): RedirectResponse|null
     {
         if ($departments->sortBy('order') === $this->getOrderedByOrder()){
@@ -40,8 +45,19 @@ class DepartmentRepository extends Repository implements DepartmentInterface
         return redirect()->route('departments.index');
     }
 
-    public function findOrFail($id): Department
+    public function store($parameters): Department
     {
-        return $this->model::findOrFail($id);
+        return Department::create($parameters);
+    }
+
+    public function update(Department $department, array $parameters): Department
+    {
+        $department->update($parameters);
+        return $department;
+    }
+
+    public function destroy(Department $department): bool
+    {
+        return $department->delete();
     }
 }

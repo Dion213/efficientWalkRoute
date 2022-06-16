@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShoppingList;
 use App\Repositories\ShoppingListRepository;
 
 class ShoppingListController extends Controller
@@ -28,5 +29,14 @@ class ShoppingListController extends Controller
     public function edit()
     {
         //
+    }
+
+    public function destroy(ShoppingList $shoppingList)
+    {
+        if ($shoppingList->can_delete){
+            $this->shoppingList_repo->destroy($shoppingList);
+        }
+
+        return redirect(route('shopping-list.index'));
     }
 }

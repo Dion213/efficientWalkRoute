@@ -5,16 +5,11 @@
 @endsection
 
 @section('content')
-    Todo:
-    <br> -Fix article create
-    <br> -Fix article edit
-
-
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="mb-4 sm:mt-0 sm:flex-none">
-            <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
+            <a href="{{ route('articles.create') }}" type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">
                 Add Article
-            </button>
+            </a>
         </div>
         <div class="flex flex-col">
             <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -38,7 +33,7 @@
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $article->description }}</td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $article->department->name }}</td>
                                         <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                            <a href="{{ route('articles.edit', [$article->id]) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach

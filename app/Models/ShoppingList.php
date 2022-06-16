@@ -30,10 +30,17 @@ use Illuminate\Support\Collection;
  * @mixin \Eloquent
  * @method static \Database\Factories\ShoppingListFactory factory(...$parameters)
  * @property-read Collection $all_articles
+ * @property-read mixed $can_delete
  */
 class ShoppingList extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'date' => 'date',
+    ];
+
+    protected $guarded = [];
 
     public function orders(): HasMany
     {
@@ -43,5 +50,11 @@ class ShoppingList extends Model
     public function walkroute(): HasOne
     {
         return $this->hasOne(WalkRoute::class);
+    }
+
+    // Attributes
+    public function getCanDeleteAttribute()
+    {
+        return $this->orders()->count() === 0;
     }
 }
