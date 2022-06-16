@@ -30,7 +30,7 @@ class WalkRouteController extends Controller
         $this->article_repo = $articleRepository;
         $this->department_repo = $departmentRepository;
     }
-
+    //TODO: Something goes wrong with the walkroute, fix it
     public function show(ShoppingList $shoppingList)
     {
         if (($walkRoute = WalkRoute::whereShoppingListId($shoppingList->id)->first()) === null){
@@ -42,7 +42,7 @@ class WalkRouteController extends Controller
 
         return view('walkroutes.show',[
             'walkRoute' => $walkRouteInGoodOrder,
-            'date' => $shoppingList->date,
+            'date' => $shoppingList->date->format('l d-m-Y'),
         ]);
     }
 
@@ -92,6 +92,7 @@ class WalkRouteController extends Controller
 
     private function controlRules(Collection $articles)
     {
+
         // TODO: Get all rules for these articles
 //        $rules = $this->rule_repo->getRulesForArticles(array_keys($allArticles));
 //        $rules = collect();
@@ -134,4 +135,12 @@ class WalkRouteController extends Controller
         return $correctOrder;
     }
 
+    public function destroy(ShoppingList $shoppingList)
+    {
+        if ($shoppingList->can_delete){
+            $this->shoppinglist_repo->destroy($shoppingList);
+        }
+
+        return redirect(route('shopping-list.index'));
+    }
 }

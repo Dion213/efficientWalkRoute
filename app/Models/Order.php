@@ -30,11 +30,14 @@ use Illuminate\Support\Collection;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  * @mixin \Eloquent
+ * @property-read mixed $can_delete
  */
 
 class Order extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 
     public function user(): BelongsTo
     {
@@ -49,5 +52,11 @@ class Order extends Model
     public function shoppingList(): BelongsTo
     {
         return $this->belongsTo(ShoppingList::class);
+    }
+
+    // Attributes
+    public function getCanDeleteAttribute()
+    {
+        return $this->orderrules()->count() === 0;
     }
 }

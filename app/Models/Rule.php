@@ -43,15 +43,61 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int|null $max_amount_allowed
  * @method static \Illuminate\Database\Eloquent\Builder|Rule whereMaxAmountAllowed($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Rule whereMinAmountRequired($value)
+ * @property array $options
+ * @method static \Illuminate\Database\Eloquent\Builder|Rule whereOptions($value)
  */
 
 class Rule extends Model
 {
     use HasFactory;
 
+    //TODO: Vragen hoe je interface implementeert:
+    // Target [App\Interfaces\Repository\RuleInterface] is not instantiable while building [App\Http\Controllers\RulesController].
+
+    /* TODO: Validation for forms
+     * $validator = \Validator::make($request->all(), [
+     *       'name' => 'required',
+     *       'club' => 'required',
+     *       'country' => 'required',
+     *       'score' => 'required',
+     *   ]);
+     */
+
+    // TODO: Add removes to edit views, if I have extra time, check if it gets used, if not show delete button!
+
+    // TODO: OrderManager maken, wat moet deze ookalweer doen? Orders aanmaken / aanpassen (logica uit OrderController halen en die in OrderManager zetten)
+    // TODO: Routeberekening in lagenscheiding zetten en hierbij verwijzen naar de classes en interfaces.
+    // TODO: Interface definieren, en goed toepassen
+    // Kan interfaces extenden van base interface:
+    /*
+     *      public function all();
+     *       public function find($id);
+     *       public function findOrFail($id);
+     *       public function findWith($id, $with);
+     *       public function make($with = []);
+     */
+
+    // TODO: Options field toevoegen aan Rule, andere rule fields verwijderen.
+    // Bijvoorbeeld: Type rule = Min_Max. Dan heb je array van options:
+    // $options = [
+    //     'min' => 2,
+    //     'max' => 4,
+    // ]
+    //
+    // In de RuleClasses staan getRules etc, hier krijg je die waardes binnen.
+
+    protected $casts = [
+        'options' => 'array',
+    ];
+
     //Types
+    public static $types = [
+        'min_amount'            => 'Minimum amount',
+        'weekdays'              => 'Only on certain weekdays',
+        'not_available_period'  => 'Not available for a period',
+    ];
+
     public const MIN_AMOUNT = 'min_amount';
-    public const MAX_AMOUNT = 'max_amount';
     public const WEEKDAYS = 'weekdays';
     public const NOT_AVAILABLE_PERIOD = 'not_available_period';
 

@@ -27,4 +27,20 @@ class ArticleRepository extends Repository implements ArticleInterface
     {
         return Article::findOrFail($id);
     }
+
+    public function store($parameters): Article
+    {
+        return Article::create($parameters);
+    }
+
+    public function update(Article $article, array $parameters): Article
+    {
+        $article->update($parameters);
+        return $article;
+    }
+
+    public function destroy(Article $article): bool
+    {
+        return $article->delete();
+    }
 }

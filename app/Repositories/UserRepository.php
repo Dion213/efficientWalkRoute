@@ -19,4 +19,9 @@ class UserRepository extends Repository implements UserInterface
     {
         return User::all();
     }
+
+    public function store($parameters): User
+    {
+        return User::create($parameters);
+    }
 }

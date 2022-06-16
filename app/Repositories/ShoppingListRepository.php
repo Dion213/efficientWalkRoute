@@ -18,12 +18,38 @@ class ShoppingListRepository extends Repository implements ShoppingListInterface
     public function get(): Collection
     {
         return ShoppingList::all()
-            ->sortBy('date', 1, true)
+            ->sortBy('date', null, true)
             ->load('orders');
     }
 
     public function getAllArticles(): Collection
     {
         return $this->shoppingList->all_articles;
+    }
+
+    public function firstOrCreate($parameters): ShoppingList
+    {
+        $shoppingList = ShoppingList::firstOrCreate([
+            'date' => $parameters['date'],
+        ]);
+
+        return $shoppingList;
+    }
+
+    public function update(ShoppingList $shoppingList, array $parameters): ShoppingList
+    {
+        $shoppingList->update($parameters);
+
+        return $shoppingList;
+    }
+
+    public function findByDate(string $date): ?ShoppingList
+    {
+        return ShoppingList::whereDate($date)->first();
+    }
+
+    public function destroy(ShoppingList $shoppingList): bool
+    {
+        return $shoppingList->delete();
     }
 }
